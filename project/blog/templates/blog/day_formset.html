@@ -2,21 +2,34 @@
 
 {% block content %}
 <form action="" method="POST">
+    {{ form.management_form }} {% for fm in form %} {{ fm.id }}
     <table class="table">
         <tr>
             <th>タイトル</th>
-            <td>{{ form.title }}</td>
+            <td>{{ fm.title }}</td>
         </tr>
         <tr>
             <th>本文</th>
-            <td>{{ form.text }}</td>
+            <td>{{ fm.text }}</td>
         </tr>
         <tr>
             <th>日付</th>
-            <td>{{ form.date }}</td>
+            <td>{{ fm.date }}</td>
         </tr>
     </table>
+    {% endfor %}
+
     <button type="submit" class="btn btn-primary">送信</button>
     {% csrf_token %}
 </form>
+<tr>
+    <th>日付</th>
+    <td>{{ form.date }}</td>
+</tr>
+{% if form.instance.pk %}
+<tr>
+    <th>削除</th>
+    <td>{{ form.DELETE }}</td>
+</tr>
+{% endif %}
 {% endblock %}

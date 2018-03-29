@@ -10,5 +10,5 @@ class DayCreateForm(forms.ModelForm):
 
 
 DayCreateFormSet = forms.modelformset_factory(
-    Day, form=DayCreateForm, extra=3
+    Day, form=DayCreateForm, extra=3, can_delete=True
 )
