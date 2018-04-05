@@ -2,34 +2,36 @@
 
 {% block content %}
 <form action="" method="POST">
-    {{ form.management_form }} {% for fm in form %} {{ fm.id }}
+    {{ formset.management_form }}
+    {% for form in formset %} 
+    {{ form.id }}
     <table class="table">
         <tr>
             <th>タイトル</th>
-            <td>{{ fm.title }}</td>
+            <td>{{ form.title }}</td>
         </tr>
         <tr>
             <th>本文</th>
-            <td>{{ fm.text }}</td>
+            <td>{{ form.text }}</td>
         </tr>
         <tr>
             <th>日付</th>
-            <td>{{ fm.date }}</td>
+            <td>{{ form.date }}</td>
         </tr>
+        <tr>
+            <th>日付</th>
+            <td>{{ form.date }}</td>
+        </tr>
+        {% if form.instance.pk %}
+        <tr>
+            <th>削除</th>
+            <td>{{ form.DELETE }}</td>
+        </tr>
+        {% endif %}
     </table>
     {% endfor %}
 
     <button type="submit" class="btn btn-primary">送信</button>
     {% csrf_token %}
 </form>
-<tr>
-    <th>日付</th>
-    <td>{{ form.date }}</td>
-</tr>
-{% if form.instance.pk %}
-<tr>
-    <th>削除</th>
-    <td>{{ form.DELETE }}</td>
-</tr>
-{% endif %}
 {% endblock %}

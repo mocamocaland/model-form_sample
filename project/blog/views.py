@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views import generic
 from .models import Day
@@ -7,7 +8,7 @@ from .forms import DayCreateForm
 class AddView(generic.CreateView):
     template_name = 'blog/day_formset.html'
     form_class = DayCreateForm
-    # success_url = reverse_lazy('blog:index')
+    uccess_url = reverse_lazy('blog:index')
 
     def form_valid(self, form):
         form.save()
