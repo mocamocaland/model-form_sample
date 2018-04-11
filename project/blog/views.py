@@ -6,6 +6,7 @@ from .forms import DayCreateForm
 
 
 class AddView(generic.CreateView):
+    model = Day
     template_name = 'blog/day_formset.html'
     form_class = DayCreateForm
     uccess_url = reverse_lazy('blog:index')

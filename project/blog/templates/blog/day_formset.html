@@ -2,9 +2,7 @@
 
 {% block content %}
 <form action="" method="POST">
-    {{ formset.management_form }}
-    {% for form in formset %} 
-    {{ form.id }}
+
     <table class="table">
         <tr>
             <th>タイトル</th>
@@ -18,10 +16,7 @@
             <th>日付</th>
             <td>{{ form.date }}</td>
         </tr>
-        <tr>
-            <th>日付</th>
-            <td>{{ form.date }}</td>
-        </tr>
+
         {% if form.instance.pk %}
         <tr>
             <th>削除</th>
@@ -29,7 +24,6 @@
         </tr>
         {% endif %}
     </table>
-    {% endfor %}
 
     <button type="submit" class="btn btn-primary">送信</button>
     {% csrf_token %}
