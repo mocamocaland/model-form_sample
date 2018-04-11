@@ -15,8 +15,16 @@ class AddView(generic.CreateView):
     form_class = DayCreateForm
     success_url = reverse_lazy('blog:index')
 
-    
+
+class UpdateView(generic.UpdateView):
+    model = Day
+    form_class = DayCreateForm
+    success_url = reverse_lazy('blog:index')
 
 
+class DeleteView(generic.DeleteView):
+    model = Day
+    success_url = reverse_lazy('blog:index')
 
-
+class DetailView(generic.DetailView):
+    model = Day
