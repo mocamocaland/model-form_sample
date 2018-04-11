@@ -1,13 +1,21 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import DayInlineFormSet
+from .forms import DayInlineFormSet, DayCreateForm
 from .models import Category, Day
 
 
 
 class IndexView(generic.ListView):
     model = Day
+
+
+class AddView(generic.CreateView):
+    model = Day
+    form_class = DayCreateForm
+    success_url = reverse_lazy('diary:index')
+
+
 class CategoryCreateView(generic.CreateView):
     model = Category
     fields = '__all__'

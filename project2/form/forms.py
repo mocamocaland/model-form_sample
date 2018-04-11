@@ -1,5 +1,5 @@
 from django import forms
-from  .models import Day
+from  .models import Day, Category
 
 
 class DayCreateForm(forms.ModelForm):
@@ -9,6 +9,6 @@ class DayCreateForm(forms.ModelForm):
         fields = '__all__'
 
 
-DayInlineFormSet = forms.modelformset_factory(
-    Day, form=DayCreateForm, extra=3, can_delete=True
+DayInlineFormSet = forms.inlineformset_factory(
+    Category, Day, fields=('title', 'text'), can_delete=False
 )

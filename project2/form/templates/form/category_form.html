@@ -2,33 +2,34 @@
 
 {% block content %}
 <form action="" method="POST">
+    <!-- ここから、カテゴリ({{ form }}) の部分 -->
     <h2>カテゴリの追加</h2>
     {{ form.non_field_errors }}
     <table class="table table-bordered">
         {% for field in form %}
-            <tr>
-                <td>{{ field.label_tag }}</td>
-                <td>{{field }} {{field.errors }}</td>
-            </tr>
+        <tr>
+            <td>{{ field.label_tag }}</td>
+            <td>{{ field }} {{ field.errors }}</td>
+        </tr>
         {% endfor %}
     </table>
+    <!-- ここまで、カテゴリの追加 -->
 
-    <h2>記事追加</h2>
-    {{ formset.management_form }}
-    {% for form in formset %}
-    {{ form.id }}
-    {{ fomr.non_field_errors }}
-    <table class="table table-borderd">
+    <!-- ここから、記事達({{ formset }})の部分 -->
+    <h2>記事達の追加</h2>
+    {{ formset.management_form }} {% for form in formset %} {{ form.id }} {{ form.non_field_errors }}
+    <table class="table table-bordered">
         {% for field in form.visible_fields %}
         <tr>
             <td>{{ field.label_tag }}</td>
-            <td>{{ field }} {{ non_field_errors }}</td>
+            <td>{{ field }} {{ field.errors }}</td>
         </tr>
         {% endfor %}
     </table>
     {% endfor %}
+    <!-- ここまで、記事達の追加 -->
 
-    <button type="submit" class="btn btn-primary"> 送信</button>
+    <button type="submit" class="btn btn-primary">送信</button>
     {% csrf_token %}
 </form>
 {% endblock %}
